@@ -20,6 +20,5 @@ public partial class BarChart : StackLayout
         set => SetValue(PointsProperty, value);
     }
 
-    
     public BarChart() => InitializeComponent();
 }

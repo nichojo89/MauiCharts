@@ -16,5 +16,4 @@
             Margin="30,0,30,0"
             HorizontalOptions="FillAndExpand"
             Value="{Binding Source={x:Reference Chart}, Path=XAxisScale}"/>
-    <!---->
 </StackLayout>

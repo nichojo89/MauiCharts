@@ -4,7 +4,9 @@
              xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:iOS="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls">
-    <!--<charts:LineChart Points="{Binding .}" /> -->
-    <charts:BarChart Points="{Binding .}" />
-    <!--<charts:PieChart Points="{Binding .}" />-->
+    <HorizontalStackLayout>
+        <!--<charts:LineChart Points="{Binding .}" />-->
+        <charts:BarChart Points="{Binding .}" />
+        <!--<charts:PieChart Points="{Binding .}" />-->
+    </HorizontalStackLayout>
 </ContentPage>

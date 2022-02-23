@@ -14,8 +14,6 @@ namespace MauiCharts.Charts
             }
         }
 
-        private Dictionary<string, float> _points;
-        private double _xAxisScale;
         public double XAxisScale
         {
             get => _xAxisScale;
@@ -50,7 +48,6 @@ namespace MauiCharts.Charts
                 TextSize = 30
             })
             {
-
                 using (var textPaint = new SKPaint
                 {
                     TextSize = 30,
@@ -59,7 +56,7 @@ namespace MauiCharts.Charts
                     Color = new SKColor(127, 44, 246)
                 })
                 {
-                    LinearGradientPaint linearGradientPaint = new LinearGradientPaint
+                    var linearGradientPaint = new LinearGradientPaint
                     {
                         StartColor = Color.FromRgb(178, 127, 255),
                         EndColor = Color.FromRgba(178, 127, 255,0),
@@ -99,13 +96,13 @@ namespace MauiCharts.Charts
         }
 
         public float Max;
+        public float BarScale = 0.0f;
         public double XAxisScaleOrigin;
         public bool ChartsLoading = true;
 
         private float _chartWidth;
-        public float BarScale = 0.0f;
+        private double _xAxisScale;
         private float _firstBarXAxis = 20.0f;
-        
-        
+        private Dictionary<string, float> _points;
     }
 }
