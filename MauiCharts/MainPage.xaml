@@ -5,7 +5,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:iOS="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls">
     <HorizontalStackLayout>
-        <!--<charts:LineChart Points="{Binding .}" />-->
+        <charts:LineChart Points="{Binding .}" />
         <charts:BarChart Points="{Binding .}" />
         <!--<charts:PieChart Points="{Binding .}" />-->
     </HorizontalStackLayout>

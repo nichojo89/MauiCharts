@@ -41,12 +41,16 @@
             var pointXAxis = _firstPointXAxis;
             var linearPath = new PathF();
 
+            var red = new Microsoft.Maui.Graphics.GradientStop(0.0f, Color.FromRgba(178, 127, 255,125));
+            var blue = new Microsoft.Maui.Graphics.GradientStop(0.27f, Color.FromRgba(235, 222, 255,0));
             var linearGradientPaint = new LinearGradientPaint
             {
-                StartColor = Color.FromRgb(178, 127, 255),
-                EndColor = Color.FromRgba(178, 127, 255, 0),
-                StartPoint = new Point(0.5, 0),
-                EndPoint = new Point(0.5, 1)
+                //StartColor = Color.FromRgba(178, 127, 255,1),
+                //EndColor = Color.FromRgba(178, 127, 255, 0),
+               
+                StartPoint = new Point(0, 0),
+                EndPoint = new Point(0, 1),
+                GradientStops = new Microsoft.Maui.Graphics.GradientStop[] { red, blue }
             };
 
             var textPaint = new SolidPaint
@@ -77,9 +81,11 @@
                 //TODO where did MeasureText go?
                 var pointText = $"{point.Key}: {point.Value}";
                 canvas.DrawString(pointText,
-                    pointXAxis + 20,
+                    pointXAxis + 50,
                     yAxis - 10,
-                    HorizontalAlignment.Center);
+                    i <= Points.Count - 2 
+                    ? HorizontalAlignment.Right
+                    : HorizontalAlignment.Left);
 
                 //Remember last point x axis
                 if (isLastDataPoint)
@@ -89,13 +95,13 @@
                 pointXAxis += POINT_SEGMENT_WIDTH + 20;
             }
 
-            canvas.SetFillPaint(linearGradientPaint, dirtyRect);
+            //canvas.SetFillPaint(linearGradientPaint, dirtyRect);
             canvas.SetFillPaint(linearGradientPaint, new RectangleF(0.0f, dirtyRect.Height - 100,dirtyRect.Width, dirtyRect.Height - 100));
 
             //Draw Line
             //gradientPaint.Style = SKPaintStyle.Stroke;
             //gradientPaint.StrokeWidth = 7;
-            canvas.FillPath(linearPath);
+            //canvas.FillPath(linearPath);
 
 
             linearPath.LineTo(new PointF(_lastPointXAxis, dirtyRect.Height));
@@ -112,7 +118,7 @@
             //                    new float[] { 0, 1 },
             //                    SKShaderTileMode.Decal);
 
-            canvas.DrawPath(linearPath);
+            canvas.FillPath(linearPath);
 
             XAxisScaleOrigin = XAxisScale;
         }

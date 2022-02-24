@@ -5,6 +5,6 @@
              xmlns:charts="clr-namespace:MauiCharts.Charts">
     <charts:LineChartGraphicsView x:Name="Chart"
                                   HeightRequest="500"
-                                  WidthRequest="2200"
+                                  WidthRequest="600"
                                   Points="{Binding .}"/>
 </StackLayout>
