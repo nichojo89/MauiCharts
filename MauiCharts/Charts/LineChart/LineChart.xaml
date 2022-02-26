@@ -7,4 +7,13 @@
                                   HeightRequest="500"
                                   WidthRequest="600"
                                   Points="{Binding .}"/>
+    <Slider MinimumTrackColor="Violet"
+            MaximumTrackColor="#7F2CF6"
+            Minimum="0"
+            Maximum="1"
+            WidthRequest="200"
+            ThumbColor="Purple"
+            Margin="30,0,30,0"
+            HorizontalOptions="FillAndExpand"
+            Value="{Binding Source={x:Reference Chart}, Path=XAxisScale}"/>
 </StackLayout>

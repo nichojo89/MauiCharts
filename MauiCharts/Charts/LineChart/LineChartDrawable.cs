@@ -53,11 +53,9 @@
                 GradientStops = new Microsoft.Maui.Graphics.GradientStop[] { red, blue }
             };
 
-            var textPaint = new SolidPaint
-            {
-                Color = Color.FromHex("#7F2CF6")
-            };
-
+            canvas.StrokeColor = Color.FromArgb("#7F2CF6");
+            canvas.FontColor = Color.FromArgb("#7F2CF6");
+            canvas.FontSize = 16;
             //Generate path
             for (var i = 0; i < Points.Count; i++)
             {
@@ -101,7 +99,7 @@
             //Draw Line
             //gradientPaint.Style = SKPaintStyle.Stroke;
             //gradientPaint.StrokeWidth = 7;
-            //canvas.FillPath(linearPath);
+            canvas.DrawPath(linearPath);
 
 
             linearPath.LineTo(new PointF(_lastPointXAxis, dirtyRect.Height));
