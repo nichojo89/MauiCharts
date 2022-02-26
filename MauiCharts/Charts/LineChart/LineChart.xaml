@@ -5,7 +5,7 @@
              xmlns:charts="clr-namespace:MauiCharts.Charts">
     <charts:LineChartGraphicsView x:Name="Chart"
                                   HeightRequest="500"
-                                  WidthRequest="600"
+                                  WidthRequest="200"
                                   Points="{Binding .}"/>
     <Slider MinimumTrackColor="Violet"
             MaximumTrackColor="#7F2CF6"

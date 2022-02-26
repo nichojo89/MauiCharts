@@ -34,7 +34,7 @@
             //If the slider was moved then change x axis for the first bar
             if (XAxisScale != XAxisScaleOrigin)
             {
-                var xMoved = (XAxisScale - XAxisScaleOrigin) * _chartWidth * -1;
+                var xMoved = (XAxisScale - XAxisScaleOrigin) * _lastPointXAxis * -1;
                 _firstPointXAxis += (float)xMoved;
             }
 
