@@ -38,7 +38,7 @@
 
         public LineChartGraphicsView()
         {
-            base.Drawable = LineChartDrawable;
+            Drawable = LineChartDrawable;
         }
 
         public LineChartDrawable LineChartDrawable = new LineChartDrawable();

@@ -1,4 +1,6 @@
-﻿namespace MauiCharts.Charts
+﻿using GradientStop = Microsoft.Maui.Graphics.GradientStop;
+
+namespace MauiCharts.Charts
 {
     internal class LineChartDrawable : View, IDrawable
     {
@@ -28,34 +30,28 @@
         {
             canvas.ResetState();
 
-            _chartWidth = dirtyRect.Width;
+            const string purple = "#7F2CF6";
             const int POINT_SEGMENT_WIDTH = 100;
+            canvas.StrokeColor = Color.FromArgb(purple);
+            canvas.FontColor = Color.FromArgb(purple);
+            canvas.FontSize = 16;
 
             //If the slider was moved then change x axis for the first bar
             if (XAxisScale != XAxisScaleOrigin)
-            {
-                var xMoved = (XAxisScale - XAxisScaleOrigin) * _lastPointXAxis * -1;
-                _firstPointXAxis += (float)xMoved;
-            }
+                _firstPointXAxis += (float)(XAxisScale - XAxisScaleOrigin) * _lastPointXAxis * -1;
 
             var pointXAxis = _firstPointXAxis;
             var linearPath = new PathF();
 
-            var red = new Microsoft.Maui.Graphics.GradientStop(0.0f, Color.FromRgba(178, 127, 255,125));
-            var blue = new Microsoft.Maui.Graphics.GradientStop(0.27f, Color.FromRgba(235, 222, 255,0));
+            var transparentMauiPurpleGradientStop = new GradientStop(0.0f, Color.FromRgba(178, 127, 255,125));
+            var mauiPurpleGradientStop = new GradientStop(0.27f, Color.FromRgba(235, 222, 255,0));
             var linearGradientPaint = new LinearGradientPaint
             {
-                //StartColor = Color.FromRgba(178, 127, 255,1),
-                //EndColor = Color.FromRgba(178, 127, 255, 0),
-               
-                StartPoint = new Point(0, 0),
                 EndPoint = new Point(0, 1),
-                GradientStops = new Microsoft.Maui.Graphics.GradientStop[] { red, blue }
+                StartPoint = new Point(0, 0),
+                GradientStops = new GradientStop[] { transparentMauiPurpleGradientStop, mauiPurpleGradientStop }
             };
-
-            canvas.StrokeColor = Color.FromArgb("#7F2CF6");
-            canvas.FontColor = Color.FromArgb("#7F2CF6");
-            canvas.FontSize = 16;
+            
             //Generate path
             for (var i = 0; i < Points.Count; i++)
             {
@@ -70,8 +66,6 @@
                 {
                     linearPath.LineTo(new PointF(pointXAxis, yAxis));
                 }
-
-                //canvas.FillCircle(new PointF(pointXAxis, yAxis), 10);
 
                 var isLastDataPoint = i == Points.Count - 1;
 
@@ -96,35 +90,25 @@
             //canvas.SetFillPaint(linearGradientPaint, dirtyRect);
             canvas.SetFillPaint(linearGradientPaint, new RectangleF(0.0f, dirtyRect.Height - 100,dirtyRect.Width, dirtyRect.Height - 100));
 
-            //Draw Line
-            //gradientPaint.Style = SKPaintStyle.Stroke;
-            //gradientPaint.StrokeWidth = 7;
+            //Draw line chart
             canvas.DrawPath(linearPath);
 
-
+            //Connect bottom of the line chart
             linearPath.LineTo(new PointF(_lastPointXAxis, dirtyRect.Height));
             linearPath.LineTo(new PointF(0, dirtyRect.Height));
 
             linearPath.Close();
 
-
-            //gradientPaint.Style = SKPaintStyle.Fill;
-            //gradientPaint.Shader = SKShader.CreateLinearGradient(
-            //                    new SKPoint(info.Rect.MidX, info.Rect.Top),
-            //                    new SKPoint(info.Rect.MidX, info.Rect.Bottom),
-            //                    new SKColor[] { mauiPurpleColor, transparentMauiPurpleColor },
-            //                    new float[] { 0, 1 },
-            //                    SKShaderTileMode.Decal);
-
+            //Fill chart with gradient
             canvas.FillPath(linearPath);
 
+            //Remember selected x axis
             XAxisScaleOrigin = XAxisScale;
         }
 
         public float Max;
         public double XAxisScaleOrigin;
 
-        private float _chartWidth;
         private double _xAxisScale;
         private float _lastPointXAxis;
         private float _firstPointXAxis = 0.0f;

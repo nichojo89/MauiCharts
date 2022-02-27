@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MauiCharts.Charts
+﻿namespace MauiCharts.Charts
 {
     internal class PieChartDrawable : View, IDrawable
     {
@@ -27,9 +21,9 @@ namespace MauiCharts.Charts
         /// <summary>
         /// Converts degrees around a circle to a Point
         /// </summary>
-        /// <param name="degrees"></param>
-        /// <param name="radius"></param>
-        /// <param name="rect"></param>
+        /// <param name="degrees">degree around a circle from zero to 360</param>
+        /// <param name="radius">distance from the center of the circle</param>
+        /// <param name="rect">rectange that contains the circle</param>
         /// <returns></returns>
         private PointF PointFromDegrees(float degrees, float radius, RectangleF rect, int padding = 0)
         {
@@ -46,17 +40,16 @@ namespace MauiCharts.Charts
             canvas.ResetState();
 
             var radius = dirtyRect.Width / 4;
-            var center = new PointF(dirtyRect.Center.X, dirtyRect.Center.Y);
             var purple = Color.FromRgba(178, 127, 255, 125);
             var translucent = Color.FromRgba(235, 222, 255, 0);
+            canvas.FontColor = Color.FromArgb("#7F2CF6");
+            var center = new PointF(dirtyRect.Center.X, dirtyRect.Center.Y);
 
             //Draw Circle 
             var radialGradientPaint = new RadialGradientPaint
             {
-                StartColor = translucent,
-                EndColor = purple
-                // Center is already (0.5,0.5)
-                // Radius is already 0.5
+                EndColor = purple,
+                StartColor = translucent
             };
             
             var radialRectangle = new RectangleF(dirtyRect.Center.X - radius, dirtyRect.Center.Y - radius,radius * 2, radius * 2);
@@ -73,8 +66,6 @@ namespace MauiCharts.Charts
 
             var lineDegrees = 0f;
             var textDegrees = 0f;
-
-            canvas.FontColor = Color.FromArgb("#7F2CF6");
             var textRadiusPadding = Convert.ToInt32(dirtyRect.Width / 10);
 
             //Draw splits into pie using 𝝅
