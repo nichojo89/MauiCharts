@@ -22,11 +22,13 @@
             typeof(Dictionary<string, float>),
             typeof(BarChartGraphicsView),
             new Dictionary<string, float>(),
-            propertyChanged: async (bindable, oldValue, newValue) =>
+            propertyChanged: (bindable, oldValue, newValue) =>
             {
-                var chartView = ((BarChartGraphicsView)bindable);
+                var chartView = (BarChartGraphicsView)bindable;
 
                 chartView.BarChartDrawable.Max = chartView.Points?.Select(x => x.Value).Max() * 1.1f ?? 0.0f;
+
+                //You can add/remove new data points which will redraw bar chart
                 chartView.BarChartDrawable.Points = (Dictionary<string, float>)newValue;
             });
 
@@ -38,8 +40,9 @@
 
         public BarChartGraphicsView()
         {
-            base.Drawable = BarChartDrawable;
+            Drawable = BarChartDrawable;
 
+            //This is not working...
             LoadChartAnimation();
         }
 

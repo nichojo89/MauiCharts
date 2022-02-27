@@ -10,7 +10,10 @@ public partial class LineChart : StackLayout
             {
                 var chartView = ((LineChart)bindable);
 
+                //Give the heighest bar a little head room for aesthetics
                 chartView.Chart.LineChartDrawable.Max = chartView.Points?.Select(x => x.Value).Max() * 1.1f ?? 0.0f;
+
+                //Set the points from XAML to component
                 chartView.Chart.LineChartDrawable.Points = (Dictionary<string, float>)newValue;
             });
 
@@ -19,8 +22,5 @@ public partial class LineChart : StackLayout
         get => (Dictionary<string, float>)GetValue(PointsProperty);
         set => SetValue(PointsProperty, value);
     }
-    public LineChart()
-	{
-		InitializeComponent();
-	}
+    public LineChart() => InitializeComponent();
 }

@@ -10,7 +10,10 @@ public partial class BarChart : StackLayout
             {
                 var chartView = ((BarChart)bindable);
 
+                //Give the heighest bar a little head room for aesthetics
                 chartView.Chart.BarChartDrawable.Max = chartView.Points?.Select(x => x.Value).Max() * 1.1f ?? 0.0f;
+
+                //Set the points from XAML to component
                 chartView.Chart.BarChartDrawable.Points = (Dictionary<string, float>)newValue;
             });
 
