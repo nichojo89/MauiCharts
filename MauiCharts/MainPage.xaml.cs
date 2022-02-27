@@ -1,10 +1,13 @@
-﻿namespace MauiCharts;
+﻿using MauiCharts.Charts;
+
+namespace MauiCharts;
 
 public partial class MainPage : ContentPage
 {
     public MainPage()
     {
         InitializeComponent();
+
         BindingContext = new Dictionary<string, float>()
             {
                 {"Apples",25},

@@ -7,6 +7,6 @@
     <HorizontalStackLayout>
         <charts:LineChart Points="{Binding .}" />
         <charts:BarChart Points="{Binding .}" />
-        <!--<charts:PieChart Points="{Binding .}" />-->
+        <charts:PieChart Points="{Binding .}" />
     </HorizontalStackLayout>
 </ContentPage>
