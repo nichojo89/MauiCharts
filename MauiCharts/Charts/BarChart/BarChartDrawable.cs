@@ -65,6 +65,7 @@ namespace MauiCharts.Charts
                     };
 
                     canvas.SetFillPaint(linearGradientPaint, dirtyRect);
+                    canvas.FontColor = Color.FromArgb("#7F2CF6");
 
                     for (var i = 0; i < Points.Count; i++)
                     {
@@ -86,7 +87,7 @@ namespace MauiCharts.Charts
                         paint.Style = SKPaintStyle.Fill;
                         paint.TextAlign = SKTextAlign.Center;
 
-                        //canvas.DrawText(point.Key, new SKPoint(barXAxis, barHeight - 20), textPaint);
+                        canvas.DrawString(point.Key, barXAxis, barHeight - 20, HorizontalAlignment.Center);
                         barXAxis += BAR_WIDTH + 20;
                     }
                 }

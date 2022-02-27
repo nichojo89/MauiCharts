@@ -5,13 +5,13 @@
              xmlns:charts="clr-namespace:MauiCharts.Charts">
     <charts:LineChartGraphicsView x:Name="Chart"
                                   HeightRequest="500"
-                                  WidthRequest="200"
+                                  WidthRequest="600"
                                   Points="{Binding .}"/>
     <Slider MinimumTrackColor="Violet"
             MaximumTrackColor="#7F2CF6"
             Minimum="0"
             Maximum="1"
-            WidthRequest="200"
+            WidthRequest="600"
             ThumbColor="Purple"
             Margin="30,0,30,0"
             HorizontalOptions="FillAndExpand"

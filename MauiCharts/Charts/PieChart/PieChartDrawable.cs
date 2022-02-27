@@ -74,7 +74,7 @@ namespace MauiCharts.Charts
             var lineDegrees = 0f;
             var textDegrees = 0f;
 
-            canvas.FontColor = Color.FromArgb("#7F2CF6"); ;
+            canvas.FontColor = Color.FromArgb("#7F2CF6");
             var textRadiusPadding = Convert.ToInt32(dirtyRect.Width / 10);
 
             //Draw splits into pie using 𝝅
